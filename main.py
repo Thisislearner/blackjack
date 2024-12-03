@@ -27,6 +27,23 @@ game_onn : bool = True
 
 # loop to run the game.
 while game_onn:
+    print("==================================================================")
+    print("------------------- WELCOME TO BLACKJACK GAME --------------------")
+    print("==================================================================\n")
 
+    #  taking player name.
+    print("=======================================================")
+    print("-- YOUR NAME MUST HAVE MORE THAN 2 ALPHABETICAL CHAR --")
+    player_name : str = "" # stores name of player.
+    while len(player_name) < 2 or not player_name.isalpha():
+        player_name = input("-- Please Enter name :>> ")
+    print("=======================================================\n")
+
+    # taking amount from player.
+    print("=======================================================")
+    print("-- MINIMUM DEPOSIT MUST BE $1000 ----------------------")
+    player_deposit : int = 0  # store total deposit from player.
+    while player_deposit < 1000 or player_deposit > 10000:
+        player_deposit = int(input(f"{player_name}, Please deposit amount :>> "))
     # delete this break after the program is done.
     break
