@@ -27,6 +27,27 @@ game_onn : bool = True
 
 # loop to run the game.
 while game_onn:
+    #player name.
+    player_name : str = ""
+    print("=======================================================")
+    while len(player_name) < 2 or not player_name.isalpha():
+        player_name = input("-- Enter your name :>> ")
+    print("=======================================================")
 
+    # taking total deposit from player.
+    print("=======================================================\n")
+    print("-- HERE MINIMUM DEPOSIT IS $1000 ----------------------")
+    player_total_amount : int = 0 # amount entered by player.
+    while player_total_amount < 1000 or player_total_amount > 10000:
+        player_total_amount = int(input (f"-- {player_name} please deposit amount :>> "))
+    print("=======================================================")
+
+    # player & system details
+    player_cards : list = [] # holds all cards of player
+    Player_points : int = 0 # score of player.
+    system_cards : list = [] # holds all cards of system.
+    system_points : int = 0 # score of system.
+
+    # loop to create initial deck
     # delete this break after the program is done.
     break
