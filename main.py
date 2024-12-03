@@ -51,20 +51,35 @@ while game_onn:
     continue_bidding : bool = True
     while continue_bidding or player_deposit > 19:
         print("=======================================================")
-        print(f"-- {player_name}.upper() place you bet --------------")
+        print(f"-- {player_name.upper()} place you bet --------------")
         player_bid : int = 0 # to hold the bid of the player.
         while player_bid < 20 or player_bid > player_deposit:
             player_bid = int(input(f"-- Min bid amount $20 :>> "))
         player_deposit -= player_bid
+        print("=======================================================\n\n")
 
         # system and player deck
         PLAYER_DECK : list = []
         SYSTEM_DECK : list = []
 
         # system and player points var
-        player_points : int = 0
-        system_points : int = 0
+        player_points : int = deck_sum(PLAYER_DECK)
+        system_points : int = deck_sum(SYSTEM_DECK)
 
+        # loop to create initial deck
+        for _ in range(2):
+            # player initialization
+            player_draw : int = draw_card()
+            PLAYER_DECK.append(1 if player_draw == 1 and player_points > 10 else player_draw)
+            player_points = deck_sum(PLAYER_DECK)
+            # system initialization
+            system_draw : int = draw_card()
+            SYSTEM_DECK.append(1 if system_draw == 1 and system_points > 10 else system_draw)
+            system_points = deck_sum(SYSTEM_DECK)
+
+        # showing cards for player.
+        print("=======================================================")
+        print(f"{player_name} has [{PLAYER_DECK[0]}, {PLAYER_DECK[1]}] dealer has [{SYSTEM_DECK[0]}, #]")
 
         ### MAKE SURE IF YOU WANT TO BID AGAIN.
     # delete this break after the program is done.
