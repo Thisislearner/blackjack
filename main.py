@@ -17,6 +17,17 @@ def deck_sum(input_deck : list) -> int:
     return total
 
 
+def display_of_deck(the_deck : list) -> None:
+    display_str : str = ""
+    print("-- [")
+    for i in range(len(the_deck)):
+        display_str += str(the_deck[i])
+        # adding comma
+        if i != len(the_deck) - 1 :
+            display_str += ", "
+    display_str += "]"
+
+
 # these are all the cards in the game.
 PARENT_CARDS_DECK = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10
@@ -80,6 +91,13 @@ while game_onn:
         # showing cards for player.
         print("=======================================================")
         print(f"{player_name} has [{PLAYER_DECK[0]}, {PLAYER_DECK[1]}] dealer has [{SYSTEM_DECK[0]}, #]")
+
+        # asking player to draw again.
+        while input(f"{player_name.upper()} press 'd' to draw :>> " == 'd' or player_points >= 21):
+            player_draw: int = draw_card()
+            PLAYER_DECK.append(1 if player_draw == 1 and player_points > 10 else player_draw)
+            player_points = deck_sum(PLAYER_DECK)
+
 
         ### MAKE SURE IF YOU WANT TO BID AGAIN.
     # delete this break after the program is done.
