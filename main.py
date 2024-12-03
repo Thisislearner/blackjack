@@ -44,6 +44,28 @@ while game_onn:
     print("-- MINIMUM DEPOSIT MUST BE $1000 ----------------------")
     player_deposit : int = 0  # store total deposit from player.
     while player_deposit < 1000 or player_deposit > 10000:
-        player_deposit = int(input(f"{player_name}, Please deposit amount :>> "))
+        player_deposit = int(input(f"-- {player_name.upper()}, deposit your amount :>> "))
+    print("======================================================\n")
+
+    # player command to bid.
+    continue_bidding : bool = True
+    while continue_bidding or player_deposit > 19:
+        print("=======================================================")
+        print(f"-- {player_name}.upper() place you bet --------------")
+        player_bid : int = 0 # to hold the bid of the player.
+        while player_bid < 20 or player_bid > player_deposit:
+            player_bid = int(input(f"-- Min bid amount $20 :>> "))
+        player_deposit -= player_bid
+
+        # system and player deck
+        PLAYER_DECK : list = []
+        SYSTEM_DECK : list = []
+
+        # system and player points var
+        player_points : int = 0
+        system_points : int = 0
+
+
+        ### MAKE SURE IF YOU WANT TO BID AGAIN.
     # delete this break after the program is done.
     break
