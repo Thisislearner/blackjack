@@ -120,11 +120,28 @@ while game_onn:
         print(f"-- player '{player_name.upper()}' has ------------------------------------")
         display_of_deck(PLAYER_DECK)
         print("\n")
-        print("-- DEALER has ----------------------------------------------------------")
+        print("-- DEALER has ------------------------------------------------")
         display_of_deck(SYSTEM_DECK)
         # checking for winner
         if player_points > 21:
-            pass
-        ### MAKE SURE IF YOU WANT TO BID AGAIN.
-    # delete this break after the program is done.
-    break
+            print(f"-- sorry {player_name.upper()} its a bust ---")
+            print("-- YOU LOST")
+        elif system_points > 21:
+            player_deposit += player_bid * 2
+            print("-- DEALER IS BUST ")
+            print("-- YOU WON!!")
+        elif player_points == system_points:
+            player_deposit += player_points
+            print("-- IT'S A DRAW")
+        else:
+            player_deposit += player_bid * 2 if player_points > system_points else 0
+            print(f"-- {player_name.upper()}, you {'won' if player_points > system_points else 'lost'}!!")
+        print("\n\n")
+        # asking player to exit.
+        if input("press 'x' to leave 'ENTER' to play again :>> ").lower() == 'x':
+            break
+    print(f"-- {player_name} you are leaving with ${player_deposit}\n\n")
+
+    # asking for new game.
+    if input("to play again press 'ENTER' or 'x' to leave  :>> ").lower() == 'x':
+        break
