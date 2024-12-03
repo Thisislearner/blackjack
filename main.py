@@ -25,7 +25,8 @@ def display_of_deck(the_deck : list) -> None:
         # adding comma
         if i != len(the_deck) - 1 :
             display_str += ", "
-    display_str += "]"
+    display_str += f"] with {deck_sum(the_deck)} Points"
+
 
 
 # these are all the cards in the game.
